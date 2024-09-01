@@ -99,8 +99,11 @@
               </div>
               <div class="contact-info-text">
                 <h2>WhatsApp</h2>
-                <!-- <span>Mon - Thu 9:00 am - 4.00 pm</span>
-                <span>Thu - Mon 10.00 pm - 5.00 pm</span> -->
+                <span><a href="https://wa.link/whdkq8" style="background: none; padding: 0 0 0 0; color: #000;">WhatsApp
+                    1</a></span>
+                <span><a href="https://wa.link/cztzwn" style="background: none; padding: 0 0 0 0; color: #000;">WhatsApp
+                    2</a></span>
+                <!-- <span></span> -->
               </div>
             </div>
           </div>
@@ -114,22 +117,22 @@
               <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div class="single-input-field">
-                    <input type="text" placeholder="Your Name" name="name" />
+                    <input type="text" placeholder="Your Name" id="name" name="name" required />
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div class="single-input-field">
-                    <input type="email" placeholder="E-mail" name="email" required />
+                    <input type="email" placeholder="E-mail" id="email" name="email" />
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div class="single-input-field">
-                    <input type="text" placeholder="Phone Number" name="phone" />
+                    <input type="text" placeholder="Phone Number" id="phone" name="phone" required />
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div class="single-input-field">
-                    <input type="text" placeholder="Delivery Address" name="subject" />
+                    <input type="text" placeholder="Delivery Address" id="address" name="address" required />
                   </div>
                 </div>
                 <!-- <div class="col-md-12 message-input">
@@ -138,7 +141,7 @@
                   </div>
                 </div> -->
                 <div class="single-input-fieldsbtn">
-                  <input type="submit" value="Send Now" />
+                  <input type="submit" onclick="Mail()" value="Send Now" />
                 </div>
               </div>
             </form>
@@ -147,6 +150,44 @@
       </div>
     </div>
   </section>
+
+  <!-- JS here -->
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+  <script>
+    function Mail() {
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let phone = document.getElementById("phone").value;
+      let address = document.getElementById("address").value;
+
+      let body =
+        "Name: " +
+        name +
+        "<br/><br/> Email: " +
+        email +
+        "<br/><br/> Phone: " +
+        phone +
+        "<br /><br /> Address: " +
+        address;
+
+      Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "mofeogunkanmi@gmail.com",
+        Password: "4E880BBC5E772014937D55EFE10797B51ECB",
+        To: "talaatuu30@gmail.com",
+        From: "mofeogunkanmi@gmail.com",
+        Subject: "Mail From Wedding Form",
+        Body: body,
+      }).then(function (message) {
+
+
+        setTimeout(function () {
+          window.location.href = "index.html";
+        }, 3000); // Redirect after 3 seconds (3000 milliseconds)
+      });
+    }
+  </script>
   <script src='js/jquery.min.js'></script>
   <script src='js/jquery.countdown.min.js'></script>
   <script src="js/index.js"></script>
