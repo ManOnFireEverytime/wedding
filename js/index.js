@@ -1,12 +1,3 @@
-/*
-Theme Name: HUGE
-Description: Creative Coming Soon Template
-Author: SquirrelLabs
-Author URI: https://themeforest.net/user/squirrellabs/portfolio?ref=SquirrelLab
-Version: 1.0
-License: https://themeforest.net/licenses/standard
-*/
-
 $(window).on("load", function () {
   $("#countdown").countdown($("#countdown").attr("data-time"), function (e) {
     $(this).html(
@@ -25,6 +16,8 @@ $(window).on("load", function () {
 })(function (args) {
   "use strict";
 
+  var goldHue = 45;
+
   var Box = function (x, y, w, h, s) {
     this.x = x;
     this.y = y;
@@ -32,7 +25,7 @@ $(window).on("load", function () {
     this.h = h;
     this.s = s;
     this.a = Math.random() * Math.PI * 2;
-    this.hue = Math.random() * 360;
+    this.hue = goldHue;
   };
 
   Box.prototype = {
@@ -41,7 +34,6 @@ $(window).on("load", function () {
       this.a += Math.random() * 0.5 - 0.25;
       this.x += Math.cos(this.a) * this.s;
       this.y += Math.sin(this.a) * this.s;
-      this.hue += 5;
       if (this.x > WIDTH) this.x = 0;
       else if (this.x < 0) this.x = WIDTH;
       if (this.y > HEIGHT) this.y = 0;
@@ -49,7 +41,8 @@ $(window).on("load", function () {
     },
     render: function (ctx) {
       ctx.save();
-      ctx.fillStyle = "hsla(" + this.hue + ", 100%, 50%, 1)";
+      var lightness = 50 + Math.sin(this.a) * 10;
+      ctx.fillStyle = "hsla(" + this.hue + ", 100%, " + lightness + "%, 0.5)";
       ctx.translate(this.x, this.y);
       ctx.rotate(this.a);
       ctx.fillRect(-this.w, -this.h / 2, this.w, this.h);
@@ -74,7 +67,7 @@ $(window).on("load", function () {
     this.o = Math.random() * 1;
     this.delay = Math.random() * 200;
     this.delayCtr = 0;
-    this.hue = Math.random() * 360;
+    this.hue = goldHue;
   };
 
   Circle.prototype = {
@@ -85,7 +78,6 @@ $(window).on("load", function () {
         return;
       }
 
-      this.hue += 1;
       this.a += 0.1;
 
       this.lx = this.x;
@@ -104,7 +96,8 @@ $(window).on("load", function () {
     render: function (ctx) {
       ctx.save();
       ctx.globalAlpha = this.o;
-      ctx.fillStyle = "hsla(" + this.hue + ", 100%, 50%, 1)";
+      var lightness = 50 + Math.sin(this.a) * 10;
+      ctx.fillStyle = "hsla(" + this.hue + ", 100%, " + lightness + "%, 0.5)";
       ctx.translate(this.x, this.y);
       ctx.beginPath();
       ctx.arc(0, 0, this.r, 0, Math.PI * 2);
@@ -113,7 +106,7 @@ $(window).on("load", function () {
 
       if (clickToggle) {
         ctx.save();
-        ctx.strokeStyle = "hsla(" + this.hue + ", 100%, 50%, 1)";
+        ctx.strokeStyle = "hsla(" + this.hue + ", 100%, 70%, 0.5)";
         ctx.beginPath();
         ctx.moveTo(this.lx, this.ly);
         ctx.lineTo(this.x, this.y);
@@ -144,7 +137,7 @@ $(window).on("load", function () {
   txtCanvas.width = WIDTH;
   txtCanvas.height = HEIGHT;
 
-  var fontSize = Math.min(WIDTH, HEIGHT) * 0.12; // Adjust the multiplier as needed
+  var fontSize = Math.min(WIDTH, HEIGHT) * 0.12;
   txtCtx.font = "bold " + fontSize + "px Sans-serif";
 
   txtCtx.textAlign = "center";
