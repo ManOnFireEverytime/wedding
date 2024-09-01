@@ -73,15 +73,27 @@ canvas {
 }
 
 h2 {
-  color: #ddd;
+  background: linear-gradient(
+    45deg,
+    #d4af37,
+    /* Light Gold */ #f0c14b,
+    /* Bright Gold */ #c99700,
+    /* Medium Gold */ #8c7000,
+    /* Dark Gold */ #c99700,
+    /* Medium Gold */ #f0c14b,
+    /* Bright Gold */ #d4af37 /* Light Gold */
+  );
+  background-clip: text;
+  -webkit-background-clip: text; /* For Safari */
+  color: transparent;
   font-weight: 500;
-  margin-bottom: 4vw;
+  margin-bottom: 10px;
 }
 
 a {
   padding: 4px 25px 4px 4px;
   background: #e1e3e5;
-  color: #fff;
+  color: #000;
   font-size: 14px;
   line-height: 40px;
   display: inline-block;
@@ -148,7 +160,19 @@ svg {
   line-height: 0.8em;
   letter-spacing: 2px;
   text-align: center;
-  color: #ddd;
+  background: linear-gradient(
+    45deg,
+    #d4af37,
+    /* Light Gold */ #f0c14b,
+    /* Bright Gold */ #c99700,
+    /* Medium Gold */ #8c7000,
+    /* Dark Gold */ #c99700,
+    /* Medium Gold */ #f0c14b,
+    /* Bright Gold */ #d4af37 /* Light Gold */
+  );
+  background-clip: text;
+  -webkit-background-clip: text; /* For Safari */
+  color: transparent;
 }
 
 #countdown > div > span {
@@ -158,7 +182,19 @@ svg {
   line-height: 1.2em;
   letter-spacing: 0;
   margin-top: 20px;
-  color: #ddd;
+  background: linear-gradient(
+    45deg,
+    #d4af37,
+    /* Light Gold */ #f0c14b,
+    /* Bright Gold */ #c99700,
+    /* Medium Gold */ #8c7000,
+    /* Dark Gold */ #c99700,
+    /* Medium Gold */ #f0c14b,
+    /* Bright Gold */ #d4af37 /* Light Gold */
+  );
+  background-clip: text;
+  -webkit-background-clip: text; /* For Safari */
+  color: transparent;
   text-transform: lowercase;
 }
 @media screen and (max-width: 768px) {
