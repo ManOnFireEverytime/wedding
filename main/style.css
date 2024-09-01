@@ -429,7 +429,19 @@ footer h3 font {
   padding: 30px 0px;
 }
 .contact-page-sec .contact-page-form h2 {
-  color: #071c34;
+  background: linear-gradient(
+    45deg,
+    #d4af37,
+    /* Light Gold */ #f0c14b,
+    /* Bright Gold */ #c99700,
+    /* Medium Gold */ #8c7000,
+    /* Dark Gold */ #c99700,
+    /* Medium Gold */ #f0c14b,
+    /* Bright Gold */ #d4af37 /* Light Gold */
+  );
+  background-clip: text;
+  -webkit-background-clip: text; /* For Safari */
+  color: transparent;
   text-transform: capitalize;
   font-size: 22px;
   font-weight: 700;
