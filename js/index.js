@@ -124,6 +124,7 @@ $(window).on("load", function () {
 
   var WIDTH = (c.width = window.innerWidth);
   var HEIGHT = (c.height = window.innerHeight);
+  var isSmallScreen = WIDTH < 768;
   var imgData = null;
   var idx = null;
   var skip = 4;
@@ -137,14 +138,16 @@ $(window).on("load", function () {
   txtCanvas.width = WIDTH;
   txtCanvas.height = HEIGHT;
 
-  var fontSize = Math.min(WIDTH, HEIGHT) * 0.12;
+  var fontSize = isSmallScreen
+    ? Math.min(WIDTH, HEIGHT) * 0.12
+    : Math.min(WIDTH, HEIGHT) * 0.12;
   txtCtx.font = "bold " + fontSize + "px Sans-serif";
 
   txtCtx.textAlign = "center";
   txtCtx.baseline = "middle";
   txtCtx.fillText("Iyanu & Muyiwa", WIDTH / 2, HEIGHT / 2);
 
-  ctx.font = "bold 12px Monospace";
+  ctx.font = "bold Monospace";
   ctx.textAlign = "center";
   ctx.baseline = "middle";
 
@@ -160,7 +163,7 @@ $(window).on("load", function () {
           HEIGHT / 2 + Math.sin(a) * WIDTH,
           x,
           y,
-          Math.random() * 4
+          isSmallScreen ? Math.random() * 3 : Math.random() * 4
         );
         circles.push(circle);
       }
